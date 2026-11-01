@@ -2,10 +2,10 @@ backend:
     name: git-gateway
     repo: gpkaua/site-tv
 
-  media_folder: "content/images"
-  public_folder: "/content/images"
+media_folder: "content/images"
+public_folder: "/content/images"
 
-  collections:
+collections:
     - name: "noticias"
       label: "Notícias"
       folder: "content/noticias"

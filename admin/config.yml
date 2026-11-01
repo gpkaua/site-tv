@@ -1,0 +1,19 @@
+backend:
+    name: git-gateway
+    repo: SEU_USUARIO_GITHUB/NOME_DO_REPOSITORIO # Você vai trocar isso depois
+
+  media_folder: "content/images"
+  public_folder: "/content/images"
+
+  collections:
+    - name: "noticias"
+      label: "Notícias"
+      folder: "content/noticias"
+      create: true
+      slug: "{{slug}}"
+      fields:
+        - { label: "Título", name: "title", type: "string", required: true }
+        - { label: "Imagem", name: "image", type: "image", required: true }
+        - { label: "Resumo", name: "summary", type: "text" }
+        - { label: "Conteúdo", name: "body", type: "markdown" }
+        - { label: "Categoria", name: "category", type: "select", options: ["MMA", "Jiu-Jitsu", "Muay Thai", "Geral"] }

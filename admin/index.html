@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="pt-br">
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Painel Administrativo - TV Fight</title>
-      <!-- Versão estável do Decap CMS -->
+      <style>
+        body { margin: 0; padding: 0; background: #f4f4f4; }
+      </style>
+      <!-- Carregamento do Script do Decap CMS -->
       <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     </head>
     <body>
-      <!-- O CMS renderiza automaticamente aqui -->
+      <!-- Elemento de montagem para evitar o erro de 'appendChild' -->
+      <div id="decap-cms-app"></div>
     </body>
   </html>

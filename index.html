@@ -1,432 +1,360 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TV Fight | Redesign Concept</title>
-        <!-- Fontes e Ícones -->
-        <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap"
-    rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TV Fight | Portal de Combate</title>
+      <link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap"
+  rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      <style>
+          :root {
+              --primary-color: #FFB800;
+              --primary-hover: #E6A600;
+              --bg-dark: #121212;
+              --bg-card: #1e1e1e;
+              --bg-footer: #0a0a0a;
+              --text-light: #f1f1f1;
+              --text-gray: #a0a0a0;
+              --transition: all 0.3s ease;
+          }
 
-        <style>
-            :root {
-                --primary-color: #FFB800; /* Amarelo Ouro / Âmbar - Tom de Campeão */
-                --primary-hover: #E6A600; /* Amarelo levemente mais escuro para hover */
-                --bg-dark: #121212;
-                --bg-card: #1e1e1e;
-                --bg-footer: #0a0a0a;
-                --text-light: #f1f1f1;
-                --text-gray: #a0a0a0;
-                --transition: all 0.3s ease;
-            }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: 'Open Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-light);
+  line-height: 1.6; overflow-x: hidden; }
+          h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
 
-            * { margin: 0; padding: 0; box-sizing: border-box; }
+          header { background-color: #000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items:
+  center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--primary-color); }
+          .header-left { display: flex; align-items: center; gap: 20px; }
+          .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-light); text-decoration: none; letter-spacing:
+  -1px; }
+          .logo span { color: var(--primary-color); }
+          .social-links { display: flex; gap: 15px; }
+          .social-links a { color: var(--text-light); font-size: 1.2rem; transition: var(--transition); }
+          .social-links a:hover { color: var(--primary-color); transform: translateY(-3px); }
+          .menu-toggle { cursor: pointer; z-index: 1100; }
+          .bar { width: 30px; height: 4px; background-color: var(--text-light); margin: 6px 0; transition:
+  var(--transition); }
 
-            body {
-                font-family: 'Open Sans', sans-serif;
-                background-color: var(--bg-dark);
-                color: var(--text-light);
-                line-height: 1.6;
-                overflow-x: hidden;
-            }
+          .side-menu { position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background-color: #000;
+  transition: var(--transition); z-index: 1050; padding: 80px 2rem 2rem; box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
+          .side-menu.active { right: 0; }
+          .side-menu ul { list-style: none; }
+          .side-//menu li { margin-bottom: 1.5rem; }
+          .side-menu a { color: var(--text-light); text-decoration: none; font-size: 1.2rem; font-weight: 600; display:
+  block; transition: var(--transition); }
+          .side-menu a:hover { color: var(--primary-color); padding-left: 10px; }
+          .submenu { list-style: none; margin-left: 1rem; margin-top: 0.5rem; border-left: 2px solid
+  var(--primary-color); padding-left: 1rem; }
+          .submenu a { font-size: 0.9rem; color: var(--text-gray); }
 
-            h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+          .container { width: 90%; max-width: 1200px; margin: 2rem auto; }
+          .hero { position: relative; width: 100%; height: 500px; background: linear-gradient(rgba(0,0,0,0.3),
+  rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=1200&auto=format&fit=crop')
+  center/cover; border-radius: 15px; display: flex; align-items: flex-end; padding: 3rem; margin-bottom: 3rem; overflow:
+  hidden; border: 1px solid #333; }
+          .hero-content h2 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+          .btn-main { background-color: var(--primary-color); color: #000 !important; padding: 0.8rem 2rem;
+  text-decoration: none; font-weight: bold; border-radius: 5px; transition: var(--transition); }
+          .btn-main:hover { background-color: var(--primary-hover); transform: scale(1.05); }
 
-            /* --- HEADER --- */
-            header {
-                background-color: #000;
-                padding: 1rem 5%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                border-bottom: 3px solid var(--primary-color);
-            }
+          .weekly-highlights { margin-bottom: 4rem; background: #1a1a1a; padding: 2rem; border-radius: 15px; border: 1px
+  dashed var(--primary-color); }
+          .category-header { display: flex; align-items: center; margin-bottom: 1.5rem; border-left: 5px solid
+  var(--primary-color); padding-left: 1rem; }
+          .category-header h3 { font-size: 1.8rem; }
+          .highlight-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+          .main-highlight { position: relative; height: 300px; border-radius: 10px; overflow: hidden; background:
+  url('https://images.unsplash.com/photo-1599474924278-f59979798827?q=80&w=800&auto=format&fit=crop') center/cover;
+  display: flex; align-items: flex-end; }
+          .main-highlight-overlay { background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem; width:
+  100%; }
+          .side-highlights { display: flex; flex-direction: column; gap: 1rem; }
+          .mini-highlight { display: flex; gap: 1rem; background: var(--bg-card); padding: 0.8rem; border-radius: 10px;
+  transition: var(--transition); cursor: pointer; border: 1px solid #333; }
+          .mini-highlight:hover { border-color: var(--primary-color); background: #252525; }
+          .mini-highlight img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
 
-            .header-left { display: flex; align-items: center; gap: 20px; }
+          .category-section { margin-bottom: 4rem; }
+          .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+          .card { background-color: var(--bg-card); border-radius: 10px; overflow: hidden; transition:
+  var(--transition); border: 1px solid #333; }
+          .card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+          .card-img { width: 100%; height: 200px; background-size: cover; background-position: center; }
+          .card-body { padding: 1.5rem; }
+          .card-body h4 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--text-light); }
+          .card-body p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1rem; }
 
-            .logo {
-                font-size: 1.5rem;
-                font-weight: 800;
-                color: var(--text-light);
-                text-decoration: none;
-                letter-spacing: -1px;
-            }
+          .see-more-container { display: flex; justify-content: center; margin-top: 2rem; }
+          .btn-see-more { background: transparent; color: var(--text-light); border: 2px solid var(--primary-color);
+  padding: 0.6rem 2rem; font-family: 'Montserrat', sans-serif; font-weight: bold; cursor: pointer; border-radius: 5px;
+  transition: var(--transition); text-transform: uppercase; }
+          .btn-see-more:hover { background: var(--primary-color); color: #000; }
 
-            .logo span { color: var(--primary-color); }
+          .tf-modal-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color:
+  var(--bg-dark); z-index: 2000; display: none; overflow-y: auto; padding: 2rem 5%; }
+          .tf-modal-page.active { display: block; }
+          .tf-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;
+  border-bottom: 3px solid var(--primary-color); padding-bottom: 1rem; }
+          .tf-btn-close-modal { background: var(--primary-color); color: #000; border: none; padding: 0.5rem 1.5rem;
+  border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-            .social-links { display: flex; gap: 15px; }
+          footer { background-color: var(--bg-footer); padding: 4rem 5% 2rem; border-top: 5px solid
+  var(--primary-color); margin-top: 5rem; }
+          .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto;
+  }
+          .footer-about h3 { margin-bottom: 1.5rem; color: var(--primary-color); }
+          .footer-about p { color: var(--text-gray); font-size: 1rem; margin-bottom: 1.5rem; text-align: justify; }
+          .newsletter-box { background: var(--bg-card); padding: 2rem; border-radius: 15px; text-align: center; border:
+  1px solid #333; }
+          .newsletter-form { display: flex; gap: 10px; margin-top: 1rem; }
+          .newsletter-form input { flex: 1; padding: 0.8rem; border-radius: 5px; border: 1px solid #444; background:
+  #000; color: white; }
+          .newsletter-form button { background: var(--primary-color); color: #000; border: none; padding: 0.8rem 1.5rem;
+  border-radius: 5px; cursor: pointer; font-weight: bold; transition: var(--transition); }
+          .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #222; color:
+  var(--text-gray); font-size: 0.8rem; }
 
-            .social-links a {
-                color: var(--text-light);
-                font-size: 1.2rem;
-                transition: var(--transition);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+          @media (max-width: 768px) { .highlight-grid { grid-template-columns: 1fr; } .footer-grid {
+  grid-template-columns: 1fr; } .newsletter-form { flex-direction: column; } }
+      </style>
+  </head>
+  <body>
 
-            .social-links a:hover {
-                color: var(--primary-color);
-                transform: translateY(-3px);
-            }
+      <header>
+          <div class="header-left">
+              <a href="#" class="logo">TV<span>FIGHT</span></a>
+              <div class="social-links">
+                  <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                  <a href="#" title="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+                  <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+          <div class="menu-toggle" onclick="toggleTfMenu()">
+              <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+      </header>
 
-            .menu-toggle { cursor: pointer; z-index: 1100; }
-            .bar {
-                width: 30px; height: 4px; background-color: var(--text-light);
-                margin: 6px 0; transition: var(--transition);
-            }
+      <nav class="side-menu" id="tfSideMenu">
+          <ul>
+              <li><a href="#">🥊 MMA</a><ul class="submenu"><li><a href="#">Nacional</a></li><li><a
+  href="#">Internacional</a></li><li><a href="#">Jungle Fight</a></li></ul></li>
+              <li><a href="#">🥋 Jiu-Jitsu</a><ul class="submenu"><li><a href="#">Tradicional</a></li><li><a
+  href="#">Grappling</a></li></ul></li>
+              <li><a href="#">🥊 Muay Thai</a><ul class="submenu"><li><a href="#">Notícias</a></li><li><a
+  href="#">Lutas</a></li></ul></li>
+              <li><a href="#">🌍 Geral</a></li>
+              <li><a href="#">✍️ Opiniões</a></li>
+              <li><a href="#">📞 Contato</a></li>
+          </ul>
+      </nav>
 
-            /* --- SIDE MENU --- */
-            .side-menu {
-                position: fixed; top: 0; right: -300px; width: 300px; height: 100%;
-                background-color: #000; transition: var(--transition); z-index: 1050;
-                padding: 80px 2rem 2rem; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            }
+      <div class="container">
+          <section class="hero">
+              <div class="hero-content">
+                  <h2 id="hero-title">A Nova Era do Jornalismo de Combate</h2>
+                  <p id="hero-text" style="margin-bottom: 1.5rem; color: #ddd;">Análises profundas, cobertura regional e
+  a verdade dos tatames.</p>
+                  <a href="#" class="btn-main">Ler Notícia Principal</a>
+              </div>
+          </section>
 
-            .side-menu.active { right: 0; }
-            .side-menu ul { list-style: none; }
-            .side-menu li { margin-bottom: 1.5rem; }
-            .side-menu a {
-                color: var(--text-light); text-decoration: none; font-size: 1.2rem;
-                font-weight: 600; display: block; transition: var(--transition);
-            }
-            .side-menu a:hover { color: var(--primary-color); padding-left: 10px; }
-            .submenu {
-                list-style: none; margin-left: 1rem; margin-top: 0.5rem;
-                border-left: 2px solid var(--primary-color); padding-left: 1rem;
-            }
-            .submenu a { font-size: 0.9rem; color: var(--text-gray); }
+          <section class="weekly-highlights">
+              <div class="category-header"><h3>⭐ Destaques da Semana</h3></div>
+              <div class="highlight-grid">
+                  <div class="main-highlight">
+                      <div class="main-highlight-overlay">
+                          <h4 id="main-highlight-title">Carregando notícia...</h4>
+                          <p id="main-highlight-text">Aguarde um momento.</p>
+                      </div>
+                  </div>
+                  <div class="side-highlights" id="side-highlights">
+                      <!-- Preenchido por JS -->
+                  </div>
+              </div>
+          </section>
 
-            /* --- MAIN CONTENT --- */
-            .container { width: 90%; max-width: 1200px; margin: 2rem auto; }
+          <section class="category-section">
+              <div class="category-header"><h3>MMA</h3></div>
+              <div class="grid" id="grid-mma"></div>
+              <div class="see-more-container"><button class="btn-see-more" onclick="openTfTopic('MMA')">Ver Mais
+  MMA</button></div>
+          </section>
 
-            .hero {
-                position: relative; width: 100%; height: 500px;
-                background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
-    url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=1200&auto=format&fit=crop') center/cover;
-                border-radius: 15px; display: flex; align-items: flex-end; padding: 3rem;
-                margin-bottom: 3rem; overflow: hidden; border: 1px solid #333;
-            }
+          <section class="category-section">
+              <div class="category-header"><h3>Jiu-Jitsu</h3></div>
+              <div class="grid" id="grid-jj"></div>
+              <div class="see-more-container"><button class="btn-see-more" onclick="openTfTopic('Jiu-Jitsu')">Ver Mais
+  Jiu-Jitsu</button></div>
+          </section>
 
-            .hero-content h2 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+          <section class="category-section">
+              <div class="category-header"><h3>Geral</h3></div>
+              <div class="grid" id="grid-geral"></div>
+              <div class="see-more-container"><button class="btn-see-more" onclick="openTfTopic('Geral')">Ver Mais
+  Geral</button></div>
+          </section>
+      </div>
 
-            .btn-main {
-                background-color: var(--primary-color); color: #000; padding: 0.8rem 2rem;
-                text-decoration: none; font-weight: bold; border-radius: 5px; transition: var(--transition);
-            }
+      <div id="tfModalPage" class="tf-modal-page">
+          <div class="tf-modal-header">
+              <h2 id="tfModalTitle">Tema</h2>
+              <button class="tf-btn-close-modal" onclick="closeTfTopic()">Voltar Home</button>
+          </div>
+          <div class="tf-grid" id="tfModalContent"></div>
+      </div>
 
-            .btn-main:hover { background-color: var(--primary-hover); transform: scale(1.05); }
+      <footer>
+          <div class="footer-grid">
+              <div class="footer-about">
+                  <h3>Sobre a TV Fight</h3>
+                  <p>A TV Fight celebra o melhor do jornalismo independente nas artes marciais mistas. Através do
+  conteúdo online que publicamos, compartilhamos nossas opiniões, análises e reflexões sobre os principais combates,
+  atletas e desafios que o mundo do MMA enfrenta atualmente.</p>
+                  <div class="social-links" style="justify-content: flex-start;">
+                      <a href="#"><i class="fab fa-facebook"></i></a>
+                      <a href="#"><i class="fab fa-x-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                  </div>
+              </div>
+              <div class="newsletter-box">
+                  <h4>Fique por dentro!</h4>
+                  <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 1rem;">Inscreva-se na nossa
+  newsletter e fique por dentro de tudo que rola no mundo do MMA!</p>
+                  <form class="newsletter-form">
+                      <input type="email" placeholder="Seu melhor e-mail" required>
+                      <button type="submit">Assinar</button>
+                  </form>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              &copy; 2026 TV FIGHT - Todos os direitos reservados.
+          </div>
+      </footer>
 
-            /* --- DESTAQUES --- */
-            .weekly-highlights {
-                margin-bottom: 4rem; background: #1a1a1a; padding: 2rem;
-                border-radius: 15px; border: 1px dashed var(--primary-color);
-            }
+      <script>
+          // --- LÓGICA DO CMS ---
+          async function loadNoticias() {
+              try {
+                  // Busca a lista de arquivos na pasta /content/noticias
+                  // No Netlify/GitHub, isso requer que as notícias existam como arquivos JSON ou Markdown
+                  const response = await fetch('/content/noticias/');
+                  // Nota: em sites estáticos reais, usamos um arquivo 'index.json' para listar as notícias
+                  // Para este protótipo, vamos simular a carga se o arquivo não for encontrado
+                  const data = await response.json();
+                  renderNoticias(data);
+              } catch (e) {
+                  console.log("Usando notícias de exemplo enquanto o CMS é configurado...");
+                  const mockData = [
+                      { title: "Análise Jungle Fight", summary: "Impacto no cenário nacional.", image:
+  "https://images.unsplash.com/photo-1599474924278-f59979798827?q=80&w=400", category: "MMA" },
+                      { title: "MMA Paraense", summary: "Destaques da semana.", image:
+  "https://images.unsplash.com/photo-1511886929823-5b257367ec2f?q=80&w=400", category: "MMA" },
+                      { title: "MMA Paulista", summary: "Novas promessas.", image:
+  "https://images.unsplash.com/photo-1590556409324-aa35d7f16f3d?q=80&w=400", category: "MMA" },
+                      { title: "Grappling vs BJJ", summary: "Diferenças táticas.", image:
+  "https://images.unsplash.com/photo-1555597673-b73636d07670?q=80&w=400", category: "Jiu-Jitsu" },
+                      { title: "Finalizações", summary: "Guia para iniciantes.", image:
+  "https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400", category: "Jiu-Jitsu" },
+                      { title: "Calendário JJ", summary: "Eventos de 2026.", image:
+  "https://images.unsplash.com/photo-1511886929823-5b257367ec2f?q=80&w=400", category: "Jiu-Jitsu" },
+                      { title: "Bastidores do Esporte", summary: "Como funciona a gestão.", image:
+  "https://images.unsplash.com/photo-1461896836934-ffe607ca82b?q=80&w=400", category: "Geral" },
+                      { title: "Saúde do Atleta", summary: "Nutrição e performance.", image:
+  "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400", category: "Geral" },
+                      { title: "Entrevista Exclusiva", summary: "O futuro do jornalismo.", image:
+  "https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400", category: "Geral" },
+                  ];
+                  renderNoticias(mockData);
+              }
+          }
 
-            .category-header {
-                display: flex; align-items: center; margin-bottom: 1.5rem;
-                border-left: 5px solid var(--primary-color); padding-left: 1rem;
-            }
+          function renderNoticias(noticias) {
+              const mmaGrid = document.getElementById('grid-mma');
+              const jjGrid = document.getElementById('grid-jj');
+              const geralGrid = document.getElementById('grid-geral');
+              const sideHighlights = document.getElementById('side-highlights');
 
-            .category-header h3 { font-size: 1.8rem; }
+              // Limpa grids
+              mmaGrid.innerHTML = ""; jjGrid.innerHTML = ""; geralGrid.innerHTML = ""; sideHighlights.innerHTML = "";
 
-            .highlight-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+              // Notícia principal (Primeira da lista)
+              document.getElementById('main-highlight-title').innerText = noticias[0].title;
+              document.getElementById('main-highlight-text').innerText = noticias[0].summary;
 
-            .main-highlight {
-                position: relative; height: 300px; border-radius: 10px; overflow: hidden;
-                background:
-    url('https://images.unsplash.com/photo-1599474924278-f59979798827?q=80&w=800&auto=format&fit=crop') center/cover;
-                display: flex; align-items: flex-end;
-            }
+              // Distribui notícias
+              noticias.forEach((n, index) => {
+                  const card = `
+                      <div class="card">
+                          <div class="card-img" style="background-image: url('${n.image}')"></div>
+                          <div class="card-body">
+                              <h4>${n.title}</h4>
+                              <p>${n.summary}</p>
+                              <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight:
+  bold;">Leia mais →</a>
+                          </div>
+                      </div>`;
 
-            .main-highlight-overlay {
-                background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem; width: 100%;
-            }
+                  if(n.category === "MMA") mmaGrid.innerHTML += card;
+                  else if(n.category === "Jiu-Jitsu") jjGrid.innerHTML += card;
+                  else geralGrid.innerHTML += card;
 
-            .side-highlights { display: flex; flex-direction: column; gap: 1rem; }
+                  // Adiciona 3 notícias nos destaques laterais
+                  if(index > 0 && index < 4) {
+                      sideHighlights.innerHTML += `
+                          <div class="mini-highlight">
+                              <img src="${n.image}" alt="Notícia">
+                              <div class="mini-highlight-content">
+                                  <h4>${n.title}</h4>
+                                  <p>${n.summary}</p>
+                              </div>
+                          </div>`;
+                  }
+              });
+          }
 
-            .mini-highlight {
-                display: flex; gap: 1rem; background: var(--bg-card); padding: 0.8rem;
-                border-radius: 10px; transition: var(--transition); cursor: pointer; border: 1px solid #333;
-            }
+          function toggleTfMenu() { document.getElementById('tfSideMenu').classList.toggle('active'); }
+          window.onclick = function(event) {
+              const menu = document.getElementById('tfSideMenu');
+              const toggle = document.querySelector('.menu-toggle');
+              if (menu && !menu.contains(event.target) && toggle && !toggle.contains(event.target)) {
+                  menu.classList.remove('active');
+              }
+          }
 
-            .mini-highlight:hover { border-color: var(--primary-color); background: #252525; }
-            .mini-highlight img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
+          function openTfTopic(topic) {
+              const modal = document.getElementById('tfModalPage');
+              const title = document.getElementById('tfModalTitle');
+              const content = document.getElementById('tfModalContent');
+              title.innerText = "Arquivo: " + topic;
+              content.innerHTML = "";
+              for(let i=1; i<=6; i++) {
+                  content.innerHTML += `
+                      <div class="card">
+                          <div class="card-img" style="background-image:
+  url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400&auto=format&fit=crop')"></div>
+                          <div class="card-body">
+                              <h4>Notícia de ${topic} #${i}</h4>
+                              <p>Conteúdo detalhado sobre o tema ${topic}.</p>
+                              <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight:
+  bold;">Leia mais →</a>
+                          </div>
+                      </div>`;
+              }
+              modal.classList.add('active');
+              document.body.style.overflow = 'hidden';
+          }
 
-            /* --- SEÇÕES DE ESPORTES --- */
-            .category-section { margin-bottom: 4rem; }
-            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-            .card { background-color: var(--bg-card); border-radius: 10px; overflow: hidden; transition:
-    var(--transition); border: 1px solid #333; }
-            .card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
-            .card-img { width: 100%; height: 200px; background-size: cover; background-position: center; }
-            .card-body { padding: 1.5rem; }
-            .card-body h4 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--text-light); }
-            .card-body p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1rem; }
+          function closeTfTopic() {
+              document.getElementById('tfModalPage').classList.remove('active');
+              document.body.style.overflow = 'auto';
+          }
 
-            .see-more-container { display: flex; justify-content: center; margin-top: 2rem; }
-
-            .btn-see-more {
-                background: transparent; color: var(--text-light); border: 2px solid var(--primary-color);
-                padding: 0.6rem 2rem; font-family: 'Montserrat', sans-serif; font-weight: bold;
-                cursor: pointer; border-radius: 5px; transition: var(--transition); text-transform: uppercase;
-            }
-
-            .btn-see-more:hover { background: var(--primary-color); color: #000; }
-
-            /* --- MODAL --- */
-            .modal-page {
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background-color: var(--bg-dark); z-index: 2000; display: none;
-                overflow-y: auto; padding: 2rem 5%;
-            }
-
-            .modal-page.active { display: block; }
-
-            .modal-header {
-                display: flex; justify-content: space-between; align-items: center;
-                margin-bottom: 3rem; border-bottom: 3px solid var(--primary-color); padding-bottom: 1rem;
-            }
-
-            .btn-close-modal {
-                background: var(--primary-color); color: #000; border: none;
-                padding: 0.5rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: bold;
-            }
-
-            /* --- FOOTER --- */
-            footer {
-                background-color: var(--bg-footer); padding: 4rem 5% 2rem;
-                border-top: 5px solid var(--primary-color); margin-top: 5rem;
-            }
-            .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto;
-    }
-            .footer-about h3 { margin-bottom: 1.5rem; color: var(--primary-color); }
-            .footer-about p { color: var(--text-gray); font-size: 1rem; margin-bottom: 1.5rem; text-align: justify; }
-            .newsletter-box { background: var(--bg-card); padding: 2rem; border-radius: 15px; text-align: center; border:
-    1px solid #333; }
-            .newsletter-form { display: flex; gap: 10px; margin-top: 1rem; }
-            .newsletter-form input { flex: 1; padding: 0.8rem; border-radius: 5px; border: 1px solid #444; background:
-    #000; color: white; }
-            .newsletter-form button { background: var(--primary-color); color: #000; border: none; padding: 0.8rem 1.5rem;
-    border-radius: 5px; cursor: pointer; font-weight: bold; transition: var(--transition); }
-            .newsletter-form button:hover { background: var(--primary-hover); }
-            .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #222; color:
-    var(--text-gray); font-size: 0.8rem; }
-
-            @media (max-width: 768px) {
-                .highlight-grid { grid-template-columns: 1fr; }
-                .footer-grid { grid-template-columns: 1fr; }
-                .newsletter-form { flex-direction: column; }
-            }
-        </style>
-    </head>
-    <body>
-
-        <header>
-            <div class="header-left">
-                <a href="#" class="logo">TV<span>FIGHT</span></a>
-                <div class="social-links">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" title="X/Twitter"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
-        </header>
-
-        <nav class="side-menu" id="sideMenu">
-            <ul>
-                <li><a href="#">🥊 MMA</a><ul class="submenu"><li><a href="#">Nacional</a></li><li><a
-    href="#">Internacional</a></li><li><a href="#">Jungle Fight</a></li></ul></li>
-                <li><a href="#">🥋 Jiu-Jitsu</a><ul class="submenu"><li><a href="#">Tradicional</a></li><li><a
-    href="#">Grappling</a></li></ul></li>
-                <li><a href="#">🥊 Muay Thai</a><ul class="submenu"><li><a href="#">Notícias</a></li><li><a
-    href="#">Lutas</a></li></ul></li>
-                <li><a href="#">🌍 Geral</a></li>
-                <li><a href="#">✍️ Opiniões</a></li>
-                <li><a href="#">📞 Contato</a></li>
-            </ul>
-        </nav>
-
-        <div class="container">
-            <section class="hero">
-                <div class="hero-content">
-                    <h2>A Nova Era do Jornalismo de Combate</h2>
-                    <p style="margin-bottom: 1.5rem; color: #ddd;">Análises profundas, cobertura regional e a verdade dos
-    tatames.</p>
-                    <a href="#" class="btn-main">Ler Notícia Principal</a>
-                </div>
-            </section>
-
-            <section class="weekly-highlights">
-                <div class="category-header"><h3>⭐ Destaques da Semana</h3></div>
-                <div class="highlight-grid">
-                    <div class="main-highlight">
-                        <div class="main-highlight-overlay">
-                            <h4>O Combate do Ano: Análise Técnica do Main Event</h4>
-                            <p>Tudo o que aconteceu na luta principal e as consequências para o ranking.</p>
-                        </div>
-                    </div>
-                    <div class="side-highlights">
-                        <div class="mini-highlight">
-                            <img
-    src="https://images.unsplash.com/photo-1555597673-b73636d07670?q=80&w=100&auto=format&fit=crop" alt="JJ">
-                            <div class="mini-highlight-content"><h4>Mestre do BJJ</h4><p>Nova técnica de
-    finalização.</p></div>
-                        </div>
-                        <div class="mini-highlight">
-                            <img
-    src="https://images.unsplash.com/photo-1599474924278-f59979798827?q=80&w=100&auto=format&fit=crop" alt="MMA">
-                            <div class="mini-highlight-content"><h4>Ascensão Regional</h4><p>Surpresas no Jungle
-    Fight.</p></div>
-                        </div>
-                        <div class="mini-highlight">
-                            <img
-    src="https://images.unsplash.com/photo-1511886929823-5b257367ec2f?q=80&w=100&auto=format&fit=crop" alt="Thai">
-                            <div class="mini-highlight-content"><h4>Thai Boxing</h4><p>Calendário de eventos.</p></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="category-section">
-                <div class="category-header"><h3>MMA</h3></div>
-                <div class="grid">
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1599474924278-f59979798827?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Análise Jungle Fight</h4><p>Impacto no cenário nacional.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1511886929823-5b257367ec2f?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>MMA Paraense</h4><p>Destaques da semana.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1590556409324-aa35d7f16f3d?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>MMA Paulista</h4><p>Novas promessas.</p></div></div>
-                </div>
-                <div class="see-more-container"><button class="btn-see-more" onclick="openTopic('MMA')">Ver Mais
-    MMA</button></div>
-            </section>
-
-            <section class="category-section">
-                <div class="category-header"><h3>Jiu-Jitsu</h3></div>
-                <div class="grid">
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1555597673-b73636d07670?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Grappling vs BJJ</h4><p>Diferenças táticas.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Finalizações</h4><p>Guia para iniciantes.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1511886929823-5b257367ec2f?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Calendário JJ</h4><p>Eventos de 2026.</p></div></div>
-                </div>
-                <div class="see-more-container"><button class="btn-see-more" onclick="openTopic('Jiu-Jitsu')">Ver Mais
-    Jiu-Jitsu</button></div>
-            </section>
-
-            <section class="category-section">
-                <div class="category-header"><h3>Geral</h3></div>
-                <div class="grid">
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1461896836934-ffe607ca82b?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Bastidores do Esporte</h4><p>Como funciona a gestão de eventos.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Saúde do Atleta</h4><p>Nutrição e performance no combate.</p></div></div>
-                    <div class="card"><div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400&auto=format&fit=crop')"></div><div
-    class="card-body"><h4>Entrevista Exclusiva</h4><p>O futuro do jornalismo independente.</p></div></div>
-                </div>
-                <div class="see-more-container"><button class="btn-see-more" onclick="openTopic('Geral')">Ver Mais
-    Geral</button></div>
-            </section>
-        </div>
-
-        <div id="modalPage" class="modal-page">
-            <div class="modal-header">
-                <h2 id="modalTitle">Tema</h2>
-                <button class="btn-close-modal" onclick="closeTopic()">Voltar Home</button>
-            </div>
-            <div class="grid" id="modalContent"></div>
-        </div>
-
-        <footer>
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>Sobre a TV Fight</h3>
-                    <p>A TV Fight celebra o melhor do jornalismo independente nas artes marciais mistas. Através do
-    conteúdo online que publicamos, compartilhamos nossas opiniões, análises e reflexões sobre os principais combates,
-    atletas e desafios que o mundo do MMA enfrenta atualmente.</p>
-                    <div class="social-links" style="justify-content: flex-start;">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="newsletter-box">
-                    <h4>Fique por dentro!</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 1rem;">Inscreva-se na nossa
-    newsletter e fique por dentro de tudo que rola no mundo do MMA!</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Seu melhor e-mail" required>
-                        <button type="submit">Assinar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 TV FIGHT - Todos os direitos reservados.
-            </div>
-        </footer>
-
-        <script>
-            function toggleMenu() {
-                document.getElementById('sideMenu').classList.toggle('active');
-            }
-
-            window.onclick = function(event) {
-                const menu = document.getElementById('sideMenu');
-                const toggle = document.querySelector('.menu-toggle');
-                if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-                    menu.classList.remove('active');
-                }
-            }
-
-            function openTopic(topic) {
-                const modal = document.getElementById('modalPage');
-                const title = document.getElementById('modalTitle');
-                const content = document.getElementById('modalContent');
-                title.innerText = "Arquivo: " + topic;
-                content.innerHTML = "";
-                for(let i=1; i<=6; i++) {
-                    content.innerHTML += `
-                        <div class="card">
-                            <div class="card-img" style="background-image:
-    url('https://images.unsplash.com/photo-1552072092-77a99537988d?q=80&w=400&auto=format&fit=crop')"></div>
-                            <div class="card-body">
-                                <h4>Notícia de ${topic} #${i}</h4>
-                                <p>Conteúdo detalhado sobre o tema ${topic} para a apresentação visual.</p>
-                                <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight:
-    bold;">Leia mais →</a>
-                            </div>
-                        </div>
-                    `;
-                }
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeTopic() {
-                document.getElementById('modalPage').classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        </script>
-    </body>
-    </html>
+          window.onload = loadNoticias;
+      </script>
+  </body>
+  </html>

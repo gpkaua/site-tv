@@ -10,10 +10,6 @@ collections:
       label: "Notícias"
       folder: "content/noticias"
       create: true
-      slug: "{{slug}}"
       fields:
         - { label: "Título", name: "title", type: "string", required: true }
-        - { label: "Imagem", name: "image", type: "image", required: true }
         - { label: "Resumo", name: "summary", type: "text" }
-        - { label: "Conteúdo", name: "body", type: "markdown" }
-        - { label: "Categoria", name: "category", type: "select", options: ["MMA", "Jiu-Jitsu", "Muay Thai", "Geral"] }

@@ -1,6 +1,6 @@
 backend:
     name: git-gateway
-    repo: SEU_USUARIO_GITHUB/NOME_DO_REPOSITORIO # Você vai trocar isso depois
+    repo: gpkaua/site-tv # <--- ATENÇÃO AQUI
 
   media_folder: "content/images"
   public_folder: "/content/images"

@@ -1,6 +1,6 @@
 backend:
     name: git-gateway
-    repo: gpkaua/site-tv # <--- ATENÇÃO AQUI
+    repo: gpkaua/site-tv
 
   media_folder: "content/images"
   public_folder: "/content/images"
